@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style/home.css" media="screen">
+    <title>jiweiworld_blog</title>
+</head>
+<body>
+    <div class="header">
+        <div class="navContainer">
+            <h1 class="logo">
+                <a href="#">
+                    <img src="images/logo.jpg" alt="logo">
+                    <span class="highLight">LifelongLearning</span>
+                </a>
+            </h1>
+            <ul id="menu">
+                <template v-for="item in nav_list">
+                    <li class="top"><a :href="item.top_link" class="top-link">{{item.message}}</a></li>
+                </template>
+            </ul>
+        </div>
+    </div>
+    <div class="carousel">
+        <ol id="carousel-indicators">
+            <li v-for="item in nav_dots" class="target" :index="item.index" :class="item.active"></li>
+        </ol>
+        <div id="scroll">
+            <template v-for="item in scroll_imgs">
+                <a :href="item.scroll_link"><img :src="item.scroll_img" class="item"></a>
+            </template>
+        </div>
+    </div>
+    <div class="card_module">
+        <card-module-title id="card-module-title"  title="FamilyMember/家庭成员" sub_title="幸福美满的一家"></card-module-title>
+        <div id="card-module-a">
+            <card-module-a class="card_module_a" img_url="./images/family1.jpg" title="小乐乐" sub_title="小乐乐爱爸爸妈妈"></card-module-a>
+            <card-module-a class="card_module_a" img_url="./images/family1.jpg" title="小乐乐" sub_title="小乐乐爱爸爸妈妈"></card-module-a>
+            <card-module-a class="card_module_a" img_url="./images/family1.jpg" title="小乐乐" sub_title="小乐乐爱爸爸妈妈"></card-module-a>
+            <card-module-a class="card_module_a" img_url="./images/family1.jpg" title="小乐乐" sub_title="小乐乐爱爸爸妈妈"></card-module-a>
+        </div>
+    </div>
+<script src="script/vue.js"></script>
+<script src="script/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: Segoe UI Light,Microsoft YaHei,Arial,Helvetica,sans-serif;
+    font-size:14px;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    cursor: pointer;
+}
+.header{
+    position: fixed;
+    width: 100%;
+    z-index:200;
+    background: linear-gradient(rgba(221,221,221,1),rgba(221,221,221,0));
+
+}
+.navContainer{
+    margin: auto;
+    width: 1180px;
+    overflow: hidden;
+}
+.logo{
+    display: inline-block;
+    font-family: Segoe UI Light;
+    font-weight: 400;
+    padding-top:15px;
+}
+
+.logo img{
+    width: 30px;
+    height:30px;
+    vertical-align: middle;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.highLight{
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+#menu{
+    float: right;
+    list-style:none;
+    border-radius:5px;
+    /*width: 750px;*/
+    line-height:50px;
+    margin:15px auto;
+}
+
+.top{
+    /*用浮动解决了<li>和<ul>宽度不能自适应的问题*/
+    /*display: inline-block;*/
+    /*width:100px;*/
+    float: left;
+    margin: auto 30px;
+    text-align:center;
+}
+.top-link:hover{
+    color: #cc6600;
+}
+
+.top-link:active{
+    color:#000000;
+}
+
+.top-link{
+    font-family: Segoe UI Light;
+    color:#ffffff;
+    /*background-image: -webkit-linear-gradient(right,#6a75b2,#ff9800 25%,#cddc39 50%,#ff9800 75%,#cddc39)!important;*/
+    /*-webkit-background-clip: text!important;*/
+    /*-webkit-text-fill-color: transparent!important;*/
+    /*-webkit-animation: masked-animation 2s infinite linear!important;*/
+}
+
+.carousel{
+    width:100%;
+    position: relative;
+}
+
+#carousel-indicators{
+    position: absolute;
+    list-style: none;
+    text-align: center;
+    width:100%;
+    bottom: 20px;
+    z-index: 200;
+}
+.active{
+    background-color: #FFFFFF !important;
+}
+.target{
+    display: inline-block;
+    width: 50px;
+    padding: 3px 0;
+    margin: 0 2px;
+    background-color: #ddd;
+    border-radius: 5px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.target:hover{
+    width: 55px;
+    opacity: 1;
+    /*问题：怎样不影相邻的元素*/
+}
+#scroll{
+    position: relative;
+    overflow: hidden;
+    height: 600px;
+}
+
+.item{
+    position: absolute;
+    width: 100%;
+    height:600px;
+    background-repeat: no-repeat;
+    background-size: 100%
+}
+
+/*卡片模块*/
+.card_module{
+    margin:15px 0;
+}
+#card-module-title{
+
+}
+
+#card-module-a{
+    margin: 15px auto;
+    padding: 0 15px;
+    text-align: center;
+}
+.card_module_a{
+    width: 20%;
+    display: inline-block;
+    margin: 0 15px;
+    border: 1px solid #eee;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;;
+}
+.card_module img{
+    width:100%;
+}
+.card_title,.card_sub{
+    text-align: center;
+}
