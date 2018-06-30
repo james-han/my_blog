@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style/home.css" media="screen">
     <title>jiweiworld_blog</title>
 </head>
 <body>
-    <div class="header">
+<div id="page_scroll">
+    <div class="header" ref="pageScrollLucency">
         <div class="navContainer">
             <h1 class="logo">
                 <a href="#">
@@ -32,15 +34,196 @@
         </div>
     </div>
     <div class="card_module">
-        <card-module-title id="card-module-title"  title="FamilyMember/家庭成员" sub_title="幸福美满的一家"></card-module-title>
-        <div id="card-module-a">
-            <card-module-a class="card_module_a" img_url="./images/family1.jpg" title="小乐乐" sub_title="小乐乐爱爸爸妈妈"></card-module-a>
-            <card-module-a class="card_module_a" img_url="./images/family1.jpg" title="小乐乐" sub_title="小乐乐爱爸爸妈妈"></card-module-a>
-            <card-module-a class="card_module_a" img_url="./images/family1.jpg" title="小乐乐" sub_title="小乐乐爱爸爸妈妈"></card-module-a>
-            <card-module-a class="card_module_a" img_url="./images/family1.jpg" title="小乐乐" sub_title="小乐乐爱爸爸妈妈"></card-module-a>
+        <card-module-title id="card-module-title_1"  title="FamilyMember / 家庭成员" sub_title="幸福美满的一家"></card-module-title>
+        <div id="card-module-a-out_1" class="card-module-a-out"></div >
+    </div>
+    <div class="card_module">
+        <card-module-title id="card-module-title_2"  title="MyStruggle / 我的奋斗" sub_title="做一个终身学习者"></card-module-title>
+        <div id="card-module-a-out_2" class="card-module-a-out"></div>
+        <div id="more-button_1" >
+            <more-button more="更多经历"></more-button>
         </div>
     </div>
-<script src="script/vue.js"></script>
+    <div class="card_module">
+        <card-module-title id="card-module-title_3"  title="MyBlog / 我的博客" sub_title="最新技术前沿，业界前沿博客"></card-module-title>
+        <div>
+            <div id="blog_content" blog_content="最新博客"></div>
+            <div id="blog_category" blog_content="博客分类"></div>
+        </div>
+    </div>
+    <div class="card_module">
+        <card-module-title id="card-module-title_4"  title="EnglishWorld / 英语世界" sub_title="英语学习，英文原版，原版翻译"></card-module-title>
+        <div id="card-module-a-out_3" class="card-module-a-out"></div>
+    </div>
+    <footer_component id="footer">
+    </footer_component>
+</div>
+    <script src="script/vue.js"></script>
 <script src="script/home.js"></script>
+<script>
+    var component_1 = new Vue({
+        el:'#page_scroll',
+        mounted () {
+            window.addEventListener('scroll', this.handleScroll)
+        },
+        methods: {
+            handleScroll () {
+                let pageScrollLucency = this.$refs.pageScrollLucency;
+                if (window.scrollY > 0){
+                    pageScrollLucency.style = 'background-color:#FFFFFF;box-Shadow:0 0 4px rgba(0,0,0,.5)';
+                }else{
+                    pageScrollLucency.style = 'background-color:linear-gradient(rgba(221,221,221,1),rgba(221,221,221,0));box-Shadow:none';
+                }
+            }
+        }
+    });
+    var card_module_a_out = Vue.component('card_module_a_out',{
+        props:{
+            card_module_a_list:Array
+        },
+        components:{
+            'card_module_a': card_module_a
+        },
+
+        template: '<div style="height: 280px"><card_module_a @mouseover.native="overUp" @mouseout.native="outHide" v-for="item in card_module_a_list" :img_url="item.img" :title="item.title" :sub_title="item.subtitle"></card_module_a></div>',
+
+        methods: {
+            overUp (e) {
+                e.currentTarget.style = 'bottom:10px;box-Shadow:0 26px 40px -24px rgba(0,36,100,.5)';
+                e.currentTarget.getElementsByClassName('img_active')[0].style = 'transform:scale(1.2,1.2)'
+            },
+            outHide (e) {
+                e.currentTarget.style = 'bottom:0;';
+                e.currentTarget.getElementsByClassName('img_active')[0].style = 'transform:scale(1,1)'
+            }
+        }
+    });
+    var mixin = {
+        data:function () {
+            return{
+                card_list: [
+                    {
+                        img: './images/family1.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    },
+                    {
+                        img: './images/family1.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    },
+                    {
+                        img: './images/family1.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    },
+                    {
+                        img: './images/family1.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    }
+                ]
+            }
+        }
+    };
+    var card_module_a_1 = new Vue({
+        el:'#card-module-a-out_1',
+        components:{
+            'card_module_a_out': card_module_a_out
+        },
+        mixins : [mixin],
+//        data:function () {
+//            return{
+//                card_list: [
+//                    {
+//                        img: './images/family1.jpg',
+//                        title: '小乐乐',
+//                        subtitle: '小乐乐爱爸爸妈妈'
+//                    },
+//                    {
+//                        img: './images/family1.jpg',
+//                        title: '小乐乐',
+//                        subtitle: '小乐乐爱爸爸妈妈'
+//                    },
+//                    {
+//                        img: './images/family1.jpg',
+//                        title: '小乐乐',
+//                        subtitle: '小乐乐爱爸爸妈妈'
+//                    },
+//                    {
+//                        img: './images/family1.jpg',
+//                        title: '小乐乐',
+//                        subtitle: '小乐乐爱爸爸妈妈'
+//                    }
+//                ]
+//            }
+//        },
+
+        template:'<card_module_a_out :card_module_a_list="card_list"></card_module_a_out>'
+
+    });
+    var card_module_a_2 = new Vue({
+        el:'#card-module-a-out_2',
+        components:{
+            'card_module_a_out': card_module_a_out
+        },
+        data:function () {
+            return{
+                card_list: [
+                    {
+                        img: './images/family2.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    },
+                    {
+                        img: './images/family2.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    },
+                    {
+                        img: './images/family2.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    },
+                    {
+                        img: './images/family2.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    }
+                ]
+            }
+        },
+        template:'<card_module_a_out :card_module_a_list="card_list"></card_module_a_out>'
+    });
+    var card_module_a_3 = new Vue({
+        el:'#card-module-a-out_3',
+        components:{
+            'card_module_a_out': card_module_a_out
+        },
+        data:function () {
+            return{
+                card_list: [
+                    {
+                        img: './images/family2.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    },
+                    {
+                        img: './images/family2.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    },
+                    {
+                        img: './images/family2.jpg',
+                        title: '小乐乐',
+                        subtitle: '小乐乐爱爸爸妈妈'
+                    }
+                ]
+            }
+        },
+        template:'<card_module_a_out :card_module_a_list="card_list"></card_module_a_out>'
+    });
+</script>
+
 </body>
 </html>
